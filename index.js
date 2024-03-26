@@ -11,7 +11,6 @@ const corsOptions = {credentials:true, origin: process.env.URL || '*'};
 
 app.use(cors(corsOptions));
 app.use(express.json());
-app.use(cookieParser());
 
 // get all todos
 app.get("/todos/:userEmail", async (req, res) => {
