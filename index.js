@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 5000;
 const corsOptions = {credentials:true, origin: process.env.URL || '*'};
 
 app.use(cors(corsOptions));
-app.use(json());
+app.use(express.json());
 app.use(cookieParser());
 
 // get all todos
