@@ -1,14 +1,17 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const PORT = process.env.PORT || 8000;
 const app = express();
 const pool = require("./db");
 const { v4: uuidv4 } = require("uuid");
 const { signup, login } = require("./routes/auth-routes");
 
-app.use(express.json());
-app.use(cors());
+const PORT = process.env.PORT || 5000;
+const corsOptions = {credentials:true, origin: process.env.URL || '*'};
+
+app.use(cors(corsOptions));
+app.use(json());
+app.use(cookieParser());
 
 // get all todos
 app.get("/todos/:userEmail", async (req, res) => {
@@ -51,8 +54,6 @@ app.post("/todos", async (req, res) => {
   }
 });
 
-//edit todo
-// Edit todo
 app.put("/todos/:id", async (req, res) => {
   const { id } = req.params;
   const { user_email, title, date, isCompleted } = req.body;
@@ -69,7 +70,6 @@ app.put("/todos/:id", async (req, res) => {
   }
 });
 
-// delete todo
 
 // delete todo
 app.delete("/todos/:id", async (req, res) => {
