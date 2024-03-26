@@ -7,9 +7,9 @@ const { v4: uuidv4 } = require("uuid");
 const { signup, login } = require("./routes/auth-routes");
 
 const PORT = process.env.PORT || 5000;
-const corsOptions = {credentials:true, origin: process.env.URL || '*'};
+// const corsOptions = {credentials:true, origin: process.env.URL || '*'};
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 
 // get all todos
