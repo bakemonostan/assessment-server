@@ -9,6 +9,10 @@ const { signup, login } = require("./routes/auth-routes");
 const PORT = process.env.PORT || 5000;
 // const corsOptions = {credentials:true, origin: process.env.URL || '*'};
 
+pool.connect()
+  .then(() => console.log('Connected to the database'))
+  .catch(err => console.error('Error connecting to the database', err));
+
 app.use(cors());
 app.use(express.json());
 
